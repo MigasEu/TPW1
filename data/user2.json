@@ -1,0 +1,86 @@
+{
+  "eurocv": {
+    "foto":  "user2.jpg",
+    "desiredEmploy": "Software Engineering",
+    "personalInfo": {
+      "name": {
+        "lastname": "Santos",
+        "firstname": "António"
+      },
+      "address": {
+        "street": "Universidade de Aveiro",
+        "cp": "3810-193",
+        "local": "Aveiro",
+        "country": "Portugal"
+      },
+      "contact": {
+        "phone": {
+          "countryprefix": "+351",
+          "number": "966 455 934"
+        },
+        "fax": {
+          "countryprefix": "+351",
+          "number": "234 370 380"
+        },
+        "email": [
+          {
+            "type": "Professional",
+            "value": "ans@ua.pt"
+          },
+          {
+            "type": "Personal",
+            "value": "antonio.santos@gmail.com"
+          }
+        ]
+      },
+      "nacionality": "Portuguese",
+      "birthdate": {
+        "day": "21",
+        "month": "January",
+        "year": "1970"
+      },
+      "gender": "Male"
+    },
+    "workexperience": {
+      "position": {
+        "dates": {
+          "start": {
+            "month": "August",
+            "year": "2000"
+          },
+          "end": {
+            "month": "Setembro",
+            "year": "2010"
+          }
+        },
+        "occupation": "Software Engineering",
+        "activities": {
+          "activity": [
+            {
+              "designation": "Data Engineering",
+              "time": "5 years"
+            },
+            {
+              "designation": "Web Development",
+              "time": "5 years"
+            }
+          ]
+        },
+        "employer": {
+          "name": "IEETA",
+          "address": {
+            "street": "Universidade de Aveiro",
+            "cp": "3810-193",
+            "local": "Aveiro",
+            "country": "Portugal"
+          },
+          "contact": {
+            "www": "www.ieeta.pt",
+            "email": "ieeta@ieeta.pt"
+          }
+        },
+        "businessSector": "Technology Inovation"
+      }
+    }
+  }
+}

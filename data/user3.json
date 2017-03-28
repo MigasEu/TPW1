@@ -1,0 +1,86 @@
+{
+  "eurocv": {
+    "foto":  "user3.jpg",
+    "desiredEmploy": "Mathematics Professor",
+    "personalInfo": {
+      "name": {
+        "lastname": "Alves",
+        "firstname": "Maria"
+      },
+      "address": {
+        "street": "Universidade de Aveiro",
+        "cp": "3810-193",
+        "local": "Aveiro",
+        "country": "Portugal"
+      },
+      "contact": {
+        "phone": {
+          "countryprefix": "+351",
+          "number": "961 533 628"
+        },
+        "fax": {
+          "countryprefix": "+351",
+          "number": "234 370 420"
+        },
+        "email": [
+          {
+            "type": "Professional",
+            "value": "malves@ua.pt"
+          },
+          {
+            "type": "Personal",
+            "value": "maria.alves@gmail.com"
+          }
+        ]
+      },
+      "nacionality": "Portuguese",
+      "birthdate": {
+        "day": "14",
+        "month": "August",
+        "year": "1982"
+      },
+      "gender": "Female"
+    },
+    "workexperience": {
+      "position": {
+        "dates": {
+          "start": {
+            "month": "April",
+            "year": "2005"
+          },
+          "end": {
+            "month": "October",
+            "year": "2015"
+          }
+        },
+        "occupation": "Mathematics Scientist",
+        "activities": {
+          "activity": [
+            {
+              "designation": "Algebra Research",
+              "time": "4 years"
+            },
+            {
+              "designation": "Non-Linear Functions Research",
+              "time": "6 years"
+            }
+          ]
+        },
+        "employer": {
+          "name": "MATH",
+          "address": {
+            "street": "Universidade de Aveiro",
+            "cp": "3810-193",
+            "local": "Aveiro",
+            "country": "Portugal"
+          },
+          "contact": {
+            "www": "www.math.pt",
+            "email": "geral@math.pt"
+          }
+        },
+        "businessSector": "Research"
+      }
+    }
+  }
+}
