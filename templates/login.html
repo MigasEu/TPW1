@@ -8,31 +8,41 @@
                 <h4 class="modal-title">Login</h4>
             </div>
             <div class="modal-body row col-lg-offset-1">
-                <div class="col-md-8">
-                    <section>
-                        <form id="loginForm" action="." method="post" class="form-horizontal">
-                            <div class="form-group">
-                                <label for="in_username" class="control-label">User name</label>
-                                <input id="in_username" name="in_username" type="text" class="form-control" />
-                            </div>
-                            <div class="form-group">
-                                <label for="in_password" class="control-label">Password</label>
-                                <input id="in_password" name="in_password" type="password" class="form-control" />
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="hidden" name="next" value="/" />
-                                    <input id="btnSubmit" type="submit" value="Log in" class="btn btn-default" />
-                                    <input id="btnCancel" type="reset" value="Cancel" class="btn btn-default" data-dismiss="modal" />
+                <section>
+                    <form id="loginForm" action="." method="post" class="form-horizontal">
+                        <div class="form-group container">
+                            <label for="in_username" class="control-label">User name</label>
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <input id="in_username" name="in_username" type="text" class="form-control" />
+                                </div>
+                                <div class="col-md-5">
+                                    <p class="validation-summary-errors" id="error_username">
+                                        Incorrect username (3-12 numbers and letters).
+                                    </p>
                                 </div>
                             </div>
-                            <p class="validation-summary-errors" hidden>Please enter a correct user name and password.</p>
-                        </form>
-                    </section>
-                </div>
-                <div class="col-md-4">
-                    <section id="socialLoginForm"></section>
-                </div>
+                        </div>
+                        <div class="form-group container">
+                            <label for="in_password" class="control-label">Password</label>
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <input id="in_password" name="in_password" type="password" class="form-control" />
+                                </div>
+                                <div class="col-md-5">
+                                    <p class="validation-summary-errors" id="error_password">
+                                        Incorrect password (3-12 numbers and letters).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group container">
+                            <input type="hidden" name="next" value="/" />
+                            <input id="btnSubmit" type="submit" value="Log in" class="btn btn-default" />
+                            <input id="btnCancel" type="reset" value="Cancel" class="btn btn-default" data-dismiss="modal" />
+                        </div>
+                    </form>
+                </section>
             </div>
         </div>
 

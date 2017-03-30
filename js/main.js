@@ -26,6 +26,7 @@ function isLoged() {
     } else {                                                                        //if already loged
         $("#logincontainer").load("templates/tologoff.html", function () {
             $("#usernameHandle").text(Cookies.get("username"))                      //print user name handle
+            $("#a2logoff").click(logout);                                           //logout on click
         });          // load tologoff
         //$("#maincontainer").load("templates/main.html");                          //  loged main page
         $("#other").empty();
@@ -33,6 +34,7 @@ function isLoged() {
 }
 
 function loadLoginForm() {
+    $("#in_username, #in_password").keyup(checkLoginInput);
     $("#loginForm").submit(function (event) {
         event.preventDefault();
         login($(this));
@@ -57,9 +59,30 @@ function loadLoginForm() {
 
 ////////////////////////////////////////////////////////////////////////////////
 // General Functions
+function checkLoginInput() {
+    var username = $("#loginForm").find('#in_username').val();                           //username from form
+    var password = $("#loginForm").find('#in_password').val();                           //password from form
+
+    //check
+    var regex = new RegExp('^[A-Za-z0-9]{3,12}$');                                      //regex
+    if (!regex.test(username)) {                                                        //username check
+        $('#error_username').show();
+    } else {
+        $('#error_username').hide();
+    }
+
+    if (!regex.test(password)) {                                                        //password check
+        $('#error_password').show();
+    } else {
+        $('#error_password').hide();
+    }
+}
+
 function login(formEl) {
-    var username = formEl.find('#in_username').val();
-    var password = formEl.find('#in_password').val();
+    var username = formEl.find('#in_username').val();                           //username from form
+    var password = formEl.find('#in_password').val();                           //password from form
+
+    //compare
     $.getJSON("data/users.json", function (data) {                              //get users
         var loged = false;
         $.each(data, function () {                                              //for each user
