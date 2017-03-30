@@ -77,3 +77,8 @@ function login(formEl) {
         }
     });
 }
+
+function logout() {
+    Cookies.remove("username");
+    isLoged();
+}
