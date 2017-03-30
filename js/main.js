@@ -19,13 +19,15 @@ $(document).ready(isLoged());
 ////////////////////////////////////////////////////////////////////////////////
 // Load HTML and its processment
 function isLoged() {
-    if (Cookies.get("username") == null) {                          //if not loged
+    if (Cookies.get("username") == null) {                                          //if not loged
         $("#logincontainer").load("templates/tologin.html");
         $("#maincontainer").load("templates/main.html");
         $("#other").load("templates/login.html", loadLoginForm);
-    } else {                                                        //if already loged
-        //$("#logincontainer").load("templates/tologin.html");      -- logout thing
-        //$("#maincontainer").load("templates/main.html");          --  loged main page
+    } else {                                                                        //if already loged
+        $("#logincontainer").load("templates/tologoff.html", function () {
+            $("#usernameHandle").text(Cookies.get("username"))                      //print user name handle
+        });          // load tologoff
+        //$("#maincontainer").load("templates/main.html");                          //  loged main page
         $("#other").empty();
     }
 }
