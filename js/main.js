@@ -28,7 +28,10 @@ function isLoged() {
             $("#usernameHandle").text(Cookies.get("username"))                      //print user name handle
             $("#a2logoff").click(logout);                                           //logout on click
         });          // load tologoff
-        //$("#maincontainer").load("templates/main.html");                          //  loged main page
+        //$("#maincontainer").load("templates/event.html");                          //  loged main page
+        //$.get("templates/event.html", function (data) { $("#maincontainer").append(data); });
+        
+        loadStory(0);
         $("#other").empty();
     }
 }
@@ -41,8 +44,43 @@ function loadLoginForm() {
     });
 }
 
+function loadStory(id) {
+    $.getJSON("data/stories.json", function (data) {
+        $("#maincontainer").load("templates/storyIntro.html", function () {
+            var sTitle = $("#storyTitle");
+            sTitle.text(data[id].title);
+            sTitle.data("index", 0);
 
+            var i = 0;
+            var wCont = true
+            while (wCont) {
+                var piece = data[id].pieces[i];
+                switch (piece.type) {
+                    case 0:
+                        showEvent(piece);
+                        sTitle.data("index", i = piece.next);
+                        break;
 
+                    case 1:
+                        
+                    default:
+                        wCont = false;
+                }
+            }
+        });
+
+        
+    });
+}
+
+function showEvent(eve) {
+    $.get("templates/event.html", function (data) {
+        var eventHTML = $(data).appendTo("#maincontainer");                     //append html of the event
+        eventHTML.attr("id", "event-"+eve.id)                                   //set the id
+        eventHTML.data("json", eve);                                    //store event info
+        eventHTML.find(".eventContent").text(eve.text);                         //print the event text
+    });
+}
 
 
 
