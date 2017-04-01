@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Global Variables
-var stories;
-
-
+var stories;                                                                        //stores all the stories
+var colorsChoice = ["yellow", "blue", "orange", "cyan"];
+var sTitle;
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -30,7 +30,6 @@ function isLoged() {
         $("#other").empty();
     }
     loadStories();
-    loadStory(0);
 }
 
 function loadLoginForm() {
@@ -43,42 +42,74 @@ function loadLoginForm() {
 
 function loadStories() {
     $.getJSON("data/stories.json", function (data) {
-        stories = data;
+        stories = data;                                                             //store all the info from json
+        loadStory(0);                                                               //for test
     });
 }
 
 function loadStory(id) {
     $("#maincontainer").load("templates/storyIntro.html", function () {
-        var sTitle = $("#storyTitle");
+        sTitle = $("#storyTitle");
         sTitle.text(stories[id].title);
+        sTitle.data("id", id);
         sTitle.data("index", 0);
-
-        var i = 0;
-        var wCont = true
-        while (wCont) {
-            var piece = stories[id].pieces[i];
-            switch (piece.type) {
-                case 0:
-                    showEvent(piece);
-                    sTitle.data("index", i = piece.next);
-                    break;
-
-                case 1:
-                        
-                default:
-                    wCont = false;
-            }
-        }
+        loadNextPiece();
     });
+}
+
+function loadNextPiece() {
+    var sId = sTitle.data("id");
+    var i = sTitle.data("index");
+    var piece = stories[sId].pieces[i];
+    switch (piece.type) {
+        case 0:
+            showEvent(piece);
+            break;
+        case 1:
+            showChoices(piece);
+            break;
+        default:
+    }
 }
 
 function showEvent(eve) {
     $.get("templates/event.html", function (data) {
         var eventHTML = $(data).appendTo("#maincontainer");                     //append html of the event
         eventHTML.attr("id", "event-"+eve.id)                                   //set the id
-        eventHTML.data("json", eve);                                    //store event info
+        eventHTML.data("json", eve);                                            //store event info
         eventHTML.find(".eventContent").text(eve.text);                         //print the event text
+
+        sTitle.data("index", eve.next);
+        loadNextPiece();
     });
+}
+
+function showChoices(piece) {
+    $.get("templates/choices.html", function (data) {
+        var choicesHTML = $(data).appendTo("#maincontainer");                       //append html of the event
+        choicesHTML.attr("id", "choices-" + piece.id)                               //set the id
+        choicesHTML.data("json", piece);                                            //store event info
+        $.each(piece.choices, function (index) {
+            $.get("templates/choice.html", function (data2) {
+                var choiceHTML = $(data2).appendTo(choicesHTML);                    //append html
+                choiceHTML.find(".choiceContent").text(piece.choices[index].text);  //print the choice text
+                choiceHTML.find(".choice").css("background-color", colorsChoice[index]);            //change backgroud-color
+
+                var colSize = (Math.floor(12 / piece.choices.length)                //calc size of each choice
+                    - Math.floor((piece.choices.length - 1) / piece.choices.length));
+                //choiceHTML.addClass("col-md-" + colSize);                           //add class for the right size
+                if (index > 0) {
+                    var offset = Math.floor((12 - colSize * piece.choices.length)   //calc offset
+                        / (piece.choices.length - 1))
+                    //choiceHTML.addClass("col-md-offset-" + offset);                 //add class for the offset
+                }
+            });
+        });
+    });
+}
+
+function selectChoice(choices, choice) {
+
 }
 
 
