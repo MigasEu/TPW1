@@ -21,6 +21,11 @@
             "text": "Mergulha.",
             "next": 3,
             "type": 2
+          },
+          {
+            "text": "Nada.",
+            "next": 3,
+            "type": 2
           }
         ],
         "type": 1
