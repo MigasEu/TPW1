@@ -1,15 +1,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Global Variables
-
+var stories;
 
 
 
 
 ////////////////////////////////////////////////////////////////////////////////
 // jQuery Initiaization
-
-
-
 $(document).ready(isLoged());
 
 
@@ -30,10 +27,10 @@ function isLoged() {
         });          // load tologoff
         //$("#maincontainer").load("templates/event.html");                          //  loged main page
         //$.get("templates/event.html", function (data) { $("#maincontainer").append(data); });
-        
-        loadStory(0);
         $("#other").empty();
     }
+    loadStories();
+    loadStory(0);
 }
 
 function loadLoginForm() {
@@ -44,32 +41,34 @@ function loadLoginForm() {
     });
 }
 
-function loadStory(id) {
+function loadStories() {
     $.getJSON("data/stories.json", function (data) {
-        $("#maincontainer").load("templates/storyIntro.html", function () {
-            var sTitle = $("#storyTitle");
-            sTitle.text(data[id].title);
-            sTitle.data("index", 0);
+        stories = data;
+    });
+}
 
-            var i = 0;
-            var wCont = true
-            while (wCont) {
-                var piece = data[id].pieces[i];
-                switch (piece.type) {
-                    case 0:
-                        showEvent(piece);
-                        sTitle.data("index", i = piece.next);
-                        break;
+function loadStory(id) {
+    $("#maincontainer").load("templates/storyIntro.html", function () {
+        var sTitle = $("#storyTitle");
+        sTitle.text(stories[id].title);
+        sTitle.data("index", 0);
 
-                    case 1:
+        var i = 0;
+        var wCont = true
+        while (wCont) {
+            var piece = stories[id].pieces[i];
+            switch (piece.type) {
+                case 0:
+                    showEvent(piece);
+                    sTitle.data("index", i = piece.next);
+                    break;
+
+                case 1:
                         
-                    default:
-                        wCont = false;
-                }
+                default:
+                    wCont = false;
             }
-        });
-
-        
+        }
     });
 }
 
