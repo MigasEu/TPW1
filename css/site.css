@@ -84,4 +84,26 @@ input[type="checkbox"].input-validation-error {
 .choice {
     background-color: black;
     color: white;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.choice-0 {
+    background-color: darkseagreen;
+    color: black;
+}
+
+.choice-1 {
+    background-color: burlywood;
+    color: white;
+}
+
+.choice-2 {
+    background-color: lightcyan;
+    color: black;
+}
+
+.choice-3 {
+    background-color: aliceblue;
+    color: white;
 }

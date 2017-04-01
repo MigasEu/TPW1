@@ -1,7 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Global Variables
 var stories;                                                                        //stores all the stories
-var colorsChoice = ["yellow", "blue", "orange", "cyan"];
 var sTitle;
 
 
@@ -93,7 +92,7 @@ function showChoices(piece) {
             $.get("templates/choice.html", function (data2) {
                 var choiceHTML = $(data2).appendTo(choicesHTML);                    //append html
                 choiceHTML.find(".choiceContent").text(piece.choices[index].text);  //print the choice text
-                choiceHTML.find(".choice").css("background-color", colorsChoice[index]);            //change backgroud-color
+                choiceHTML.find(".choice").addClass("choice-"+index);            //change backgroud-color
 
                 var colSize = (Math.floor(12 / piece.choices.length)                //calc size of each choice
                     - Math.floor((piece.choices.length - 1) / piece.choices.length));
