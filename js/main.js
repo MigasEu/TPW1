@@ -128,21 +128,33 @@ function selectChoice(choices, choice) {
 ////////////////////////////////////////////////////////////////////////////////
 // General Functions
 function checkLoginInput() {
-    var username = $("#loginForm").find('#in_username').val();                           //username from form
-    var password = $("#loginForm").find('#in_password').val();                           //password from form
+    var username = $("#loginForm").find('#in_username').val();                                                   //username from form
+    var password = $("#loginForm").find('#in_password').val();                                                   //password from form
 
     //check
     var regex = new RegExp('^[A-Za-z0-9]{3,12}$');                                      //regex
-    if (!regex.test(username)) {                                                        //username check
+    var usernameCheck = regex.test(username);
+    var passwordCheck = regex.test(password);
+    if (!usernameCheck) {                                                        //username check
         $('#error_username').show();
+        $("#username-group").addClass("has-danger");
     } else {
         $('#error_username').hide();
+        $("#username-group").removeClass("has-danger");
     }
 
-    if (!regex.test(password)) {                                                        //password check
+    if (!passwordCheck) {                                                        //password check
         $('#error_password').show();
+        $("#password-group").addClass("has-danger");
     } else {
         $('#error_password').hide();
+        $("#password-group").removeClass("has-danger");
+    }
+
+    if (!usernameCheck || !passwordCheck) {
+        $("#btnSubmit").prop('disabled', true);
+    } else {
+        $("#btnSubmit").prop('disabled', false);
     }
 }
 

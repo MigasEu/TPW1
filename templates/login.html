@@ -51,7 +51,7 @@
 
 
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Login</h5>
@@ -62,26 +62,26 @@
             <div class="modal-body">
                 <section>
                     <form id="loginForm" action="." method="post" class="form-horizontal">
-                        <div class="form-group container">
+                        <div id="username-group" class="form-group container">
                             <label for="in_username" class="control-label">User name</label>
                             <div class="row">
-                                <div class="col-md-7">
-                                    <input id="in_username" name="in_username" type="text" class="form-control" />
+                                <div class="col-md-auto">
+                                    <input id="in_username" name="in_username" type="text" class="form-control  form-control-danger" />
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col offset-1"">
                                     <p class="validation-summary-errors" id="error_username">
                                         Incorrect username (3-12 numbers and letters).
                                     </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group container">
+                        <div id="password-group" class="form-group container">
                             <label for="in_password" class="control-label">Password</label>
                             <div class="row">
-                                <div class="col-md-7">
-                                    <input id="in_password" name="in_password" type="password" class="form-control" />
+                                <div class="col-md-auto">
+                                    <input id="in_password" name="in_password" type="password" class="form-control  form-control-danger" />
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col offset-1">
                                     <p class="validation-summary-errors" id="error_password">
                                         Incorrect password (3-12 numbers and letters).
                                     </p>
@@ -89,15 +89,12 @@
                             </div>
                         </div>
                         <div class="form-group container">
-                            <button id="btnSubmit" type="submit" class="btn btn-primary">Log in</button>
-                            <input id="btnCancel" type="reset" value="Cancel" class="btn btn-default" data-dismiss="modal" />
+                            <button id="btnSubmit" type="submit" class="btn btn-primary" disabled>Log in</button>
+                            <input class="btn btn-warning" type="reset" value="Reset">
+                            <button id="btnCancel" class="btn btn-secondary" type="submit" data-dismiss="modal">Cancel</button>
                         </div>
                     </form>
                 </section>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
