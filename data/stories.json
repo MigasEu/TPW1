@@ -24,7 +24,7 @@
           },
           {
             "text": "Nada.",
-            "next": 3,
+            "next": 0,
             "type": 2
           }
         ],
@@ -33,14 +33,25 @@
       {
         "id": 2,
         "text": "A água está contaminada, o Zé morreu!",
-        "next": 2,
-        "type": 3
+        "next": 4,
+        "type": 2
       },
       {
         "id": 3,
         "text": "O Zé conseguiu atravessar o rio, ganhas-te",
-        "next": 2,
-        "type": 4
+        "next": 0,
+        "type": 3
+      },
+      {
+        "id": 4,
+        "choices": [
+          {
+            "text": "Voltar no tempo.",
+            "next": 0,
+            "type": 2
+          }
+        ],
+        "type": 1
       }
     ]
   }

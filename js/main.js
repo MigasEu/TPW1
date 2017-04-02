@@ -57,17 +57,18 @@ function loadStory(id) {
 }
 
 function loadNextPiece() {
-    var sId = sTitle.data("id");
-    var i = sTitle.data("index");
-    var piece = stories[sId].pieces[i];
+    var sId = sTitle.data("id");                                                    //stores locally the story id
+    var i = sTitle.data("index");                                                   //stores locally the story piece index to load
+    var piece = stories[sId].pieces[i];                                             //stores locally the piece info
     switch (piece.type) {
+        case 2:                                                                     //TO-DO
+        case 3:                                                                     //TO-DO
         case 0:
             showEvent(piece);
             break;
         case 1:
             showChoices(piece);
             break;
-        default:
     }
 }
 
@@ -87,28 +88,32 @@ function showChoices(piece) {
     $.get("templates/choices.html", function (data) {
         var choicesHTML = $(data).appendTo("#maincontainer");                       //append html of the event
         choicesHTML.attr("id", "choices-" + piece.id)                               //set the id
-        choicesHTML.data("json", piece);                                            //store event info
+        choicesHTML.data("choices", piece);                                            //store event info
         $.each(piece.choices, function (index) {
             $.get("templates/choice.html", function (data2) {
                 var choiceHTML = $(data2).appendTo(choicesHTML);                    //append html
                 choiceHTML.find(".choiceContent").text(piece.choices[index].text);  //print the choice text
-                choiceHTML.find(".choice").addClass("choice-"+index);            //change backgroud-color
-
-                var colSize = (Math.floor(12 / piece.choices.length)                //calc size of each choice
-                    - Math.floor((piece.choices.length - 1) / piece.choices.length));
-                //choiceHTML.addClass("col-md-" + colSize);                           //add class for the right size
-                if (index > 0) {
-                    var offset = Math.floor((12 - colSize * piece.choices.length)   //calc offset
-                        / (piece.choices.length - 1))
-                    //choiceHTML.addClass("col-md-offset-" + offset);                 //add class for the offset
-                }
+                choiceHTML.find(".choice").addClass("choice-"+index);               //change backgroud-color
+                choiceHTML.on('click', ".choice",
+                    { "allChoices": piece.choices }, selectChoice);                 //add selectChoice event
+                choiceHTML.find(".choice").data("choice", piece.choices[index]);                    //store data of the choice
+                
             });
         });
     });
 }
 
-function selectChoice(choices, choice) {
+function selectChoice(event) {
+    var total = event.data.allChoices.length - 1;
+    var choice = $(this);
+    $.when($(this).parent(".col").siblings().each(function (index) {
+        $(this).fadeOut(800, function () { $(this).detach(); });                    //animation of other choices fading out
 
+
+    })).then(function () {
+        sTitle.data("index", choice.data("choice").next);                          //update de index of the piece to read
+        loadNextPiece();
+    });
 }
 
 
