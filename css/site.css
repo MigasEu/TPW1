@@ -1,5 +1,6 @@
 ﻿body {
-    padding-top: 50px;
+    background-color: #f2f2f2;
+    padding-top: 56px;
     padding-bottom: 20px;
 }
 
@@ -14,6 +15,10 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+#maincontainer {
+    margin-top: 10px;
 }
 
 /* styles for validation helpers */
@@ -37,6 +42,7 @@ input[type="checkbox"].input-validation-error {
     color: #b94a48;
     align-content: stretch;
     display: none;
+    text-align: right;
 }
 
 .validation-summary-valid {
@@ -48,4 +54,71 @@ input[type="checkbox"].input-validation-error {
 }
 .bs-example{
 	margin: 20px;
+}
+
+.storyIntro {
+    background-color: #777;
+    box-shadow: .5px .5px 2px grey, -.5px -.5px 2px grey;
+    border: solid 1px #999;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.storyIntro h1 {
+    color: white;
+    text-align: center;
+    text-shadow: .5px .5px .5px black;
+}
+
+.piece, .event, .choice, .restart {
+    box-shadow: .5px .5px 1px grey, -.5px -.5px 1px grey;
+    border: solid 1px #999;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.event {
+    background-color: white;
+}
+
+.choice {
+    background-color: black;
+    color: white;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.choice-0, .choice-0:disabled {
+    background-color: darkseagreen;
+    color: black;
+}
+
+.choice-1, .choice-1:disabled {
+    background-color: burlywood;
+    color: black;
+}
+
+.choice-2, .choice-2:disabled {
+    background-color: lightcyan;
+    color: black;
+}
+
+.choice-3, .choice-3:disabled {
+    background-color: aliceblue;
+    color: white;
+}
+
+.event-lose {
+    background-color: coral;
+    border: 1px solid red;
+}
+
+.event-win {
+    background-color: darkseagreen;
+    border: 1px solid green;
+}
+
+.restart {
+    border-radius: 0;
+    cursor: pointer;
 }
