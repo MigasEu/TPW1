@@ -94,7 +94,7 @@ function showChoices(piece) {
                 var choiceHTML = $(data2).appendTo(choicesHTML);                    //append html
                 choiceHTML.find(".choiceContent").text(piece.choices[index].text);  //print the choice text
                 choiceHTML.find(".choice").addClass("choice-"+index);               //change backgroud-color
-                choiceHTML.on('click', ".choice",
+                choiceHTML.find(".choice").on('click',
                     { "allChoices": piece.choices }, selectChoice);                 //add selectChoice event
                 choiceHTML.find(".choice").data("choice", piece.choices[index]);                    //store data of the choice
                 
@@ -106,12 +106,13 @@ function showChoices(piece) {
 function selectChoice(event) {
     var total = event.data.allChoices.length - 1;
     var choice = $(this);
+    choice.prop('disabled', true);                                                  //disable selected
+    choice.off();                                                                   //turn off event handler
     $.when($(this).parent(".col").siblings().each(function (index) {
+        $(this).find(".choice").prop('disabled', true);                             //disable choice
         $(this).fadeOut(800, function () { $(this).detach(); });                    //animation of other choices fading out
-
-
     })).then(function () {
-        sTitle.data("index", choice.data("choice").next);                          //update de index of the piece to read
+        sTitle.data("index", choice.data("choice").next);                          //update de index of the piece to 
         loadNextPiece();
     });
 }
@@ -178,7 +179,7 @@ function login(formEl) {
         if (loged) {
             Cookies.set("username", username);                                  //save cookies
             $("#loginModal").on('hidden.bs.modal', function () {
-                isLoged();            
+                isLoged();
             });
             $("#loginModal").modal('hide');                                      //close login modal
         }

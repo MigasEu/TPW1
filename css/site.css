@@ -88,22 +88,22 @@ input[type="checkbox"].input-validation-error {
     cursor: pointer;
 }
 
-.choice-0 {
+.choice-0, .choice-0:disabled {
     background-color: darkseagreen;
     color: black;
 }
 
-.choice-1 {
+.choice-1, .choice-1:disabled {
     background-color: burlywood;
-    color: white;
+    color: black;
 }
 
-.choice-2 {
+.choice-2, .choice-2:disabled {
     background-color: lightcyan;
     color: black;
 }
 
-.choice-3 {
+.choice-3, .choice-3:disabled {
     background-color: aliceblue;
     color: white;
 }
