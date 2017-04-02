@@ -70,7 +70,7 @@ input[type="checkbox"].input-validation-error {
     text-shadow: .5px .5px .5px black;
 }
 
-.piece, .event, .choice {
+.piece, .event, .choice, .restart {
     box-shadow: .5px .5px 1px grey, -.5px -.5px 1px grey;
     border: solid 1px #999;
     margin-bottom: 15px;
@@ -106,4 +106,19 @@ input[type="checkbox"].input-validation-error {
 .choice-3, .choice-3:disabled {
     background-color: aliceblue;
     color: white;
+}
+
+.event-lose {
+    background-color: coral;
+    border: 1px solid red;
+}
+
+.event-win {
+    background-color: darkseagreen;
+    border: 1px solid green;
+}
+
+.restart {
+    border-radius: 0;
+    cursor: pointer;
 }
