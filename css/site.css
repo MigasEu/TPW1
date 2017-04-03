@@ -56,7 +56,26 @@ input[type="checkbox"].input-validation-error {
 	margin: 20px;
 }
 
-.storyIntro {
+.story-card-container {
+    margin-bottom: 15px;
+}
+
+.story-card {
+    cursor: pointer;
+    height: 100%;
+    display : flex;
+    align-items : center;
+}
+
+.story-card .story-title {
+    margin: 0 auto;
+}
+
+.story-card:hover {
+    background-color: #666;
+}
+
+.storyIntro, .story-card {
     background-color: #777;
     box-shadow: .5px .5px 2px grey, -.5px -.5px 2px grey;
     border: solid 1px #999;
@@ -64,7 +83,7 @@ input[type="checkbox"].input-validation-error {
     padding: 10px;
 }
 
-.storyIntro h1 {
+.storyIntro .story-title, .story-card .story-title {
     color: white;
     text-align: center;
     text-shadow: .5px .5px .5px black;

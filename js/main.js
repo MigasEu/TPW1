@@ -17,7 +17,6 @@ $(document).ready(isLoged());
 function isLoged() {
     if (Cookies.get("username") == null) {                                          //if not loged
         $("#logincontainer").load("templates/tologin.html");
-        $("#maincontainer").load("templates/main.html");
         $("#other").load("templates/login.html", loadLoginForm);
     } else {                                                                        //if already loged
         $("#logincontainer").load("templates/tologoff.html", function () {
@@ -27,7 +26,10 @@ function isLoged() {
         //$("#maincontainer").load("templates/event.html");                          //  loged main page
         //$.get("templates/event.html", function (data) { $("#maincontainer").append(data); });
     }
-    loadStories();                                                                  //load story list from json
+    $.getJSON("data/stories.json", function (data) {                                //load story list from json
+        stories = data;                                                             //store all the info from json
+        loadStories($("#maincontainer"));                                                              //for test
+    });                                                                 
 }
 
 function loadLoginForm() {
@@ -38,17 +40,22 @@ function loadLoginForm() {
     });
 }
 
-function loadStories() {
-    $.getJSON("data/stories.json", function (data) {
-        stories = data;                                                             //store all the info from json
-        loadStory(0);                                                               //for test
+function loadStories(container) {
+    container.load("templates/storyList.html", function () {
+        $.each(stories, function (index) {
+            $.get("templates/storyCard.html", function (data) {                         //load html
+                var cardHTML = $(data).appendTo(".stories-list");                       //append html
+                cardHTML.find(".story-title").text(stories[index].title);               //print the choice text
+                cardHTML.on('click', function () { loadStory(stories[index].id); });                            //add loadStory event on click
+            });
+        });
     });
 }
 
 function loadStory(id) {
-    $("#maincontainer").load("templates/storyIntro.html", function () {             //load info element
-        sTitle = $("#storyTitle");                                                  //get info element
-        scrollTo(sTitle);                                                           //scroll to info
+    $("#maincontainer").load("templates/storyIntro.html", function () {             //load intro element
+        sTitle = $(".storyIntro").find(".story-title");                             //get intro element
+        scrollTo(sTitle);                                                           //scroll to intro
         sTitle.text(stories[id].title);                                             //add title text
         sTitle.data("id", id);                                                      //store story id on info element
         sTitle.data("index", 0);                                                    //store index on info element
