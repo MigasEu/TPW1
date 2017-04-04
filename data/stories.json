@@ -14,18 +14,11 @@
         "choices": [
           {
             "text": "Bebe água.",
-            "next": 2,
-            "type": 2
+            "next": 2
           },
           {
             "text": "Mergulha.",
-            "next": 3,
-            "type": 2
-          },
-          {
-            "text": "Nada.",
-            "next": 4,
-            "type": 2
+            "next": 3
           }
         ],
         "type": 1
@@ -39,17 +32,6 @@
         "id": 3,
         "text": "O Zé conseguiu atravessar o rio, ganhas-te",
         "type": 3
-      },
-      {
-        "id": 4,
-        "choices": [
-          {
-            "text": "Voltar no tempo.",
-            "next": 0,
-            "type": 2
-          }
-        ],
-        "type": 1
       }
     ]
   },

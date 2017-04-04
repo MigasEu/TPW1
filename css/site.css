@@ -56,6 +56,23 @@ input[type="checkbox"].input-validation-error {
 	margin: 20px;
 }
 
+.create-story input[type="text"], .create-story textarea {
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    border: none;
+    resize: none;
+}
+
+.create-story input[type="text"] {
+    font-size: 2.5rem;
+}
+
+.create-story .choice {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
 .story-card-container {
     margin-bottom: 15px;
 }
@@ -83,17 +100,20 @@ input[type="checkbox"].input-validation-error {
     padding: 10px;
 }
 
-.storyIntro .story-title, .story-card .story-title {
+.story-title {
     color: white;
     text-align: center;
     text-shadow: .5px .5px .5px black;
 }
 
-.piece, .event, .choice, .restart {
+.event-row, .choices, .create-piece {
+    margin-bottom: 15px;
+}
+.piece, .event, .choice, .restart, .create-save {
     box-shadow: .5px .5px 1px grey, -.5px -.5px 1px grey;
     border: solid 1px #999;
-    margin-bottom: 15px;
     padding: 10px;
+    border-radius: 0;
 }
 
 .event {
@@ -103,36 +123,35 @@ input[type="checkbox"].input-validation-error {
 .choice {
     background-color: black;
     color: white;
-    border-radius: 0;
     cursor: pointer;
 }
 
-.choice-0, .choice-0:disabled {
-    background-color: darkseagreen;
-    color: black;
+.choice-0, .choice-0:disabled, .choice-0[readonly] {
+    background-color: #31b0d5;
+    color: white;
 }
 
-.choice-1, .choice-1:disabled {
+.choice-1, .choice-1:disabled, .choice-1[readonly] {
     background-color: burlywood;
     color: black;
 }
 
-.choice-2, .choice-2:disabled {
+.choice-2, .choice-2:disabled, .choice-2[readonly] {
     background-color: lightcyan;
     color: black;
 }
 
-.choice-3, .choice-3:disabled {
+.choice-3, .choice-3:disabled, .choice-3[readonly] {
     background-color: aliceblue;
     color: white;
 }
 
-.event-lose {
+.event-lose, .event-lose[readonly] {
     background-color: coral;
     border: 1px solid red;
 }
 
-.event-win {
+.event-win, .event-win[readonly] {
     background-color: darkseagreen;
     border: 1px solid green;
 }
