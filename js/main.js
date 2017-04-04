@@ -14,14 +14,11 @@ var nextId;
 ////////////////////////////////////////////////////////////////////////////////
 // jQuery Initiaization
 $(document).ready(function () {
-    if (stories == undefined) {
-        $.getJSON("data/stories.json", function (data) {                                //load story list from json
-            stories = data;
-            loadStories($("#maincontainer"));                                           //store all the info from json
-        });
-    }
+    $.getJSON("data/stories.json", function (data) {                                //load story list from json
+        stories = data;
+        loadMainPage();
+    });
     $("#toHome").click(function() { loadStories($("#maincontainer")); });
-    $("#navbar-left").find(":not(:first-child)").remove();
 
     isLoged();
 });
@@ -32,7 +29,18 @@ $(document).ready(function () {
 
 ////////////////////////////////////////////////////////////////////////////////
 // Load HTML and its processment
+function loadMainPage() {
+    if (Cookies.get("username") == null) {
+        listContainer = $("#maincontainer").load("templates/main.html", function () {
+            loadStories($("#story-list-container"));
+        });
+    } else {
+        loadStories($("#maincontainer"));
+    }
+}
+
 function isLoged() {
+    $("#navbar-left").find(":not(:first-child)").remove();
     if (Cookies.get("username") == null) {                                          //if not loged
         $("#logincontainer").load("templates/tologin.html");
         $("#other").load("templates/login.html", loadLoginForm);
@@ -551,6 +559,7 @@ function login(formEl) {
             Cookies.set("username", username);                                  //save cookies
             $("#loginModal").on('hidden.bs.modal', function () {
                 isLoged();
+                loadMainPage();
                 $("#other").empty();                                            //erase login modal
             });
             $("#loginModal").modal('hide');                                     //close login modal
@@ -561,6 +570,7 @@ function login(formEl) {
 function logout() {
     Cookies.remove("username");
     isLoged();
+    loadMainPage();
 }
 
 function scrollTo(elem) {                                                       //scroll to element (with animation)
