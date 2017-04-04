@@ -473,6 +473,7 @@ function selectChoice(event) {
 ////////////////////////////////////////////////////////////////////////////////
 // General Functions
 function checkLoginInput() {
+
     var username = $("#loginForm").find('#in_username').val();                                                   //username from form
     var password = $("#loginForm").find('#in_password').val();                                                   //password from form
 
@@ -563,6 +564,8 @@ function login(formEl) {
                 $("#other").empty();                                            //erase login modal
             });
             $("#loginModal").modal('hide');                                     //close login modal
+        } else {
+            $("#error_user").css("display", "block");
         }
     });
 }

@@ -24,6 +24,8 @@ textarea {
 /* styles for validation helpers */
 .field-validation-error {
     color: #b94a48;
+    text-align: right;
+    display: none;
 }
 
 .field-validation-valid {
@@ -42,18 +44,10 @@ input[type="checkbox"].input-validation-error {
     color: #b94a48;
     align-content: stretch;
     display: none;
-    text-align: right;
 }
 
 .validation-summary-valid {
     display: none;
-}
-
-.carousel .item img{
-    margin: 0 auto; /* Align slide image horizontally center */
-}
-.bs-example{
-	margin: 20px;
 }
 
 .create-story input[type="text"], .create-story textarea {
