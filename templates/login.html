@@ -16,8 +16,8 @@
                                 <div class="col-md-auto">
                                     <input id="in_username" name="in_username" type="text" class="form-control  form-control-danger" />
                                 </div>
-                                <div class="col offset-1"">
-                                    <p class="validation-summary-errors" id="error_username">
+                                <div class="col offset-1">
+                                    <p class="field-validation-error" id="error_username">
                                         Incorrect username (3-12 numbers and letters).
                                     </p>
                                 </div>
@@ -30,12 +30,15 @@
                                     <input id="in_password" name="in_password" type="password" class="form-control  form-control-danger" />
                                 </div>
                                 <div class="col offset-1">
-                                    <p class="validation-summary-errors" id="error_password">
+                                    <p class="field-validation-error" id="error_password">
                                         Incorrect password (3-12 numbers and letters).
                                     </p>
                                 </div>
                             </div>
                         </div>
+                        <p class="validation-summary-errors" id="error_user">
+                            Wrong username or password.
+                        </p>
                         <div class="form-group container">
                             <button id="btnSubmit" type="submit" class="btn btn-primary" disabled>Log in</button>
                             <input class="btn btn-warning" type="reset" value="Reset">
